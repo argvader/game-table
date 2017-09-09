@@ -1,13 +1,19 @@
 (ns table-top.app
-  (:require [om.core :as om :include-macros true]
-            [om.dom :as dom :include-macros true]))
+  (:require [om.next :as om :refer-macros [defui]]
+            [om.dom :as dom]
+            [goog.dom :as gdom]
+            [table-top.ui.components.video :as video]))
 
-(defn widget [data owner]
-  (reify
-    om/IRender
-    (render [this]
-      (dom/h1 nil (:text data)))))
+(defui App
+  Object
+  (render [this]
+    (dom/div nil
+      (dom/h1 nil "GameTable !!")
+      (video/video))))
+
+(def app (om/factory App))
 
 (defn init []
-  (om/root widget {:text "Gametable!!"}
-           {:target (. js/document (getElementById "gametable"))}))
+  (js/ReactDOM.render
+    (app)
+    (gdom/getElement "gametable")))
