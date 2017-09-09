@@ -1,0 +1,4 @@
+{:require  [table-top.app]
+ :init-fns [table-top.app/init]
+ :compiler-options {:asset-path "js/app.out"
+                    :externs ["src/cljs/table-top/js/w3c_rtc-externs.js"]}}

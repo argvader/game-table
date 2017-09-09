@@ -1,0 +1,4 @@
+(start-repl)
+boot --help
+(+ 1 1)
+exit
